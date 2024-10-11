@@ -1,5 +1,5 @@
 export interface ProductInOrder {
-  ProductId: number;
+  ProductId: number|string;
   Quantity: number;
 }
 

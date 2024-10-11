@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Product } from '../../core/models/product.model';
+import {  Product } from '../../shared/models/product.model';
 import { DataService } from '../../core/services/data.service';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -16,13 +17,14 @@ import { DataService } from '../../core/services/data.service';
 export class ProductsComponent {
   products: Product[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,private cartService:CartService) {}
+
 
   ngOnInit(): void {
-    this.dataService.getProducts().subscribe((data: Product[]) => {
-      console.log('data',data)
-      this.products = data;
-    });
+    this.dataService.getProducts().subscribe(
+      (data: Product[]) => (this.products = data),
+      (error) => console.error('Failed to load products', error)
+    );
   }
 
   isLowStock(product: Product): boolean {
@@ -40,4 +42,7 @@ export class ProductsComponent {
 
   }
 
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+  }
 }

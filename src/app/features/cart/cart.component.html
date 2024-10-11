@@ -1,0 +1,24 @@
+<!-- features/cart/cart.component.html -->
+<div class="container">
+  <h1>Your Cart</h1>
+  <div *ngIf="cartItems.length === 0">
+    <p>Your cart is empty.</p>
+  </div>
+
+  <div *ngFor="let item of cartItems" class="row mb-3">
+    <div class="col-md-8">
+      <h5>{{ item.product.ProductName }}</h5>
+      <p>Price: {{ item.product.ProductPrice | currency }}</p>
+      <p>Quantity: {{ item.quantity }}</p>
+    </div>
+    <div class="col-md-4 text-right">
+      <div class="btn-group" role="group">
+        <button class="btn btn-primary" (click)="increaseQuantity(item.product.ProductId)">+</button>
+        <button class="btn btn-danger" (click)="decreaseQuantity(item.product.ProductId)">-</button>
+        <button class="btn btn-danger" (click)="removeFromCart(item.product.ProductId)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <button *ngIf="cartItems.length > 0" class="btn btn-success">Proceed to Checkout</button>
+</div>

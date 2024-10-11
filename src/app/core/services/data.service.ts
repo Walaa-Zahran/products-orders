@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Order, ProductInOrder } from '../models/order.model';
-import { Product } from '../models/product.model';
-import { Customer } from '../models/customer.model';
+import { Order, ProductInOrder } from '../../shared/models/order.model';
+import { Product } from '../../shared/models/product.model';
+import { Customer } from '../../shared/models/customer.model';
 
 
 @Injectable({

@@ -1,3 +1,14 @@
-.nav-link{
-  color:#fff;
+
+.navbar-collapse{
+  flex-grow:unset;
+  .nav-link{
+    color:#fff;
+    .badge {
+      position: absolute;
+      top: 5px;
+
+      color:#fff;
+    }
+
+  }
 }
