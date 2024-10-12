@@ -22,7 +22,10 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     this.dataService.getProducts().subscribe(
-      (data: Product[]) => (this.products = data),
+      (data: Product[]) => {
+        console.log('Received products:', data);
+        this.products = data;
+      },
       (error) => console.error('Failed to load products', error)
     );
   }
@@ -31,15 +34,7 @@ export class ProductsComponent {
     return product.AvailablePieces < 5;
   }
   editProductQuantity(product: Product, quantity: number): void {
-    // Ensure the quantity is not negative
-    if(quantity>=0){
-      const prd = this.products.find((p) => p.ProductId === product.ProductId);
-
-      if (prd ) {
-        prd.AvailablePieces=quantity;
-      }
-    }
-
+    this.dataService.editProductQuantity(product, quantity);
   }
 
 
