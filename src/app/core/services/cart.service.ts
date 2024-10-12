@@ -22,7 +22,7 @@ export class CartService {
     return this.cartItemCount.asObservable();
   }
 
-  addToCart(product: Product) {
+  addOrder(product: Product) {
     const existingItem = this.cartItems.find(item => item.product.ProductId === product.ProductId);
 
     if (existingItem) {

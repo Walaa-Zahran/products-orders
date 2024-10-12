@@ -37,7 +37,6 @@ export class OrderListComponent {
 // Calculate the total price of an order
 calculateOrderPrice(order: Order): number {
   let totalPrice = 0;
-console.log('order.products',order.Products)
   for (const orderProduct of order.Products) {
     // Find the product details from products array
     const product = this.products.find((p) => p.ProductId === orderProduct.ProductId);
