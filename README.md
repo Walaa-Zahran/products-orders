@@ -1,27 +1,117 @@
-# ProductsOrders
+# Product Order Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+## Description
 
-## Development server
+This is a **Product Order Application** built with the latest version of **Angular**. It demonstrates a simple e-commerce workflow where users can view products, add them to their cart, and place orders. The application features product management, cart functionality, and order tracking, making it suitable for e-commerce scenarios.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Key Features:
 
-## Code scaffolding
+- **Product Listing**: Displays all available products with pricing and stock availability.
+- **Add to Cart**: Allows users to add products to their shopping cart.
+- **Edit Product Quantity**: Adjust product quantities directly in the product list.
+- **Order Details**: Displays detailed order information including customer details and ordered products.
+- **Low Stock Warning**: Highlights products with fewer than 5 pieces available.
+- **Local Storage Support**: Cart data is saved in the browser's local storage for persistence across sessions.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Table of Contents
 
-## Build
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+1. **Clone the repository:**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   git clone https://github.com/Walaa-Zahran/products-orders.git
+   ```
 
-## Running end-to-end tests
+2. **Navigate to the project directory:**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   cd product-order-app
+   ```
 
-## Further help
+3. **Install the dependencies:**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   ```bash
+   npm install
+   ```
+
+4. **Run the application:**
+
+   ```bash
+   ng serve
+   ```
+
+   Navigate to `http://localhost:4200/` in your browser.
+
+## Usage
+
+- Once the application is running, you will see a list of products on the home page.
+- You can:
+  - Adjust the quantity of a product.
+  - Add products to the cart.
+  - View the total price of your order.
+  - Check out the detailed order information.
+
+## Technologies
+
+- **Angular** (Latest version)
+- **RxJS** for reactive programming.
+- **Bootstrap** for responsive design.
+- **LocalStorage** for cart persistence.
+
+## Features
+
+### 1. Product Listing
+
+Displays all products with images, prices, and available stock. Products with low stock (less than 5 pieces) are highlighted.
+
+### 2. Add to Cart
+
+Users can add products to their cart. The cart persists even after the browser is refreshed, thanks to local storage.
+
+### 3. Edit Product Quantity
+
+The application allows users to adjust the quantity of products both on the product listing page and the cart.
+
+### 4. Order Management
+
+The user can place an order and view details such as the total price and payment method.
+
+## Project Structure
+
+Here's a brief overview of the folder structure:
+
+```bash
+src/
+│
+├── app/
+│   ├── core/
+│   │   ├── services/          # Services like DataService, CartService
+│   ├── features/
+│   │   ├── products/          # Product-related components
+│   │   ├── cart/              # Cart-related components
+│   │   ├── orders/            # Order-related components
+│   ├── shared/                # Shared models, utilities, and components
+│
+├── assets/                    # Static assets (images, JSON files)
+│
+└── environments/              # Environment configurations
+```
+
+## Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/new-feature`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature/new-feature`).
+5. Open a pull request.
