@@ -1,32 +1,39 @@
 <section class="container">
   <header>
+    <!-- Page Title -->
     <h1 class="my-4">Products</h1>
   </header>
 
   <div class="row">
+    <!-- Loop through products and display each product in a card -->
     <article *ngFor="let product of products" class="col-md-4 mb-4">
       <div class="card" [ngClass]="{ 'bg-warning': isLowStock(product) }">
+        <!-- Product Image -->
         <figure>
           <img
             [src]="product.ProductImg"
             class="card-img-top"
             alt="{{ product.ProductName }}"
           />
+          <!-- Product Name -->
           <figcaption>
             <h5 class="card-title">{{ product.ProductName }}</h5>
           </figcaption>
         </figure>
 
         <div class="card-body">
+          <!-- Product Details -->
           <p class="card-text">
             Price: {{ product.ProductPrice | currency }} <br />
             Available Pieces: {{ product.AvailablePieces }}
           </p>
         </div>
 
+        <!-- Action buttons to update quantity and add to cart -->
         <footer class="row p-3">
           <div class="col-sm-6">
             <div class="btn-group" role="group">
+              <!-- Increase Product Quantity Button -->
               <button
                 (click)="
                   editProductQuantity(product, product.AvailablePieces + 1)
@@ -35,6 +42,7 @@
               >
                 +
               </button>
+              <!-- Decrease Product Quantity Button -->
               <button
                 (click)="
                   editProductQuantity(product, product.AvailablePieces - 1)
@@ -47,6 +55,7 @@
           </div>
 
           <div class="col-sm-6 d-flex justify-content-end">
+            <!-- Add to Cart Button -->
             <button class="btn btn-primary" (click)="addToCart(product)">
               Add to Cart
             </button>

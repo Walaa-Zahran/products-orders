@@ -1,24 +1,58 @@
-<!-- features/cart/cart.component.html -->
 <div class="container">
   <h1>Your Cart</h1>
+
+  <!-- Display a message if the cart is empty -->
   <div *ngIf="cartItems.length === 0">
     <p>Your cart is empty.</p>
   </div>
 
+  <!-- Iterate through the cart items and display each product with its details -->
   <div *ngFor="let item of cartItems" class="row mb-3">
     <div class="col-md-8">
       <h5>{{ item.product.ProductName }}</h5>
+      <!-- Product name -->
       <p>Price: {{ item.product.ProductPrice | currency }}</p>
+      <!-- Product price -->
       <p>Quantity: {{ item.quantity }}</p>
+      <!-- Product quantity -->
     </div>
+
+    <!-- Action buttons for increasing/decreasing quantity or removing the item -->
     <div class="col-md-4 text-right">
       <div class="btn-group" role="group">
-        <button class="btn btn-primary" (click)="increaseQuantity(item.product.ProductId)">+</button>
-        <button class="btn btn-danger" (click)="decreaseQuantity(item.product.ProductId)">-</button>
-        <button class="btn btn-danger" (click)="removeFromCart(item.product.ProductId)">Remove</button>
+        <!-- Button to increase the quantity of the product -->
+        <button
+          class="btn btn-primary"
+          (click)="increaseQuantity(item.product.ProductId)"
+        >
+          +
+        </button>
+
+        <!-- Button to decrease the quantity of the product -->
+        <button
+          class="btn btn-danger"
+          (click)="decreaseQuantity(item.product.ProductId)"
+        >
+          -
+        </button>
+
+        <!-- Button to remove the product from the cart -->
+        <button
+          class="btn btn-danger"
+          (click)="removeFromCart(item.product.ProductId)"
+        >
+          Remove
+        </button>
       </div>
     </div>
   </div>
 
-  <button *ngIf="cartItems.length > 0" class="btn btn-success" routerLink="/checkout">Proceed to Checkout</button>
+  <!-- Display a checkout button if the cart is not empty -->
+  <button
+    *ngIf="cartItems.length > 0"
+    class="btn btn-success"
+    routerLink="/checkout"
+  >
+    Proceed to Checkout
+  </button>
 </div>

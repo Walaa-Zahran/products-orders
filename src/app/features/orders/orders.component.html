@@ -1,14 +1,18 @@
 <section class="container">
   <header>
     <h1 class="my-4">Orders</h1>
+    <!-- Main heading for the orders section -->
   </header>
 
+  <!-- Table listing all the orders along with total price and payment method -->
   <table class="table table-striped">
     <caption>
       List of all orders with total price and payment method
+      <!-- Descriptive caption for accessibility -->
     </caption>
     <thead>
       <tr>
+        <!-- Table headers with scope attribute for better accessibility -->
         <th scope="col">Order Id</th>
         <th scope="col">Total Price</th>
         <th scope="col">Payment Method</th>
@@ -16,17 +20,23 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Looping through orders to display each one in a row -->
       <tr *ngFor="let order of orders">
         <td scope="row">{{ order.OrderId }}</td>
-        <!-- Display the calculated total price for each order -->
+        <!-- Order ID -->
         <td>{{ calculateOrderPrice(order) | currency }}</td>
+        <!-- Total Price for the order -->
         <td>{{ order.PaymentType }}</td>
+        <!-- Payment method used for the order -->
+
+        <!-- Link to view order details -->
         <td>
           <a
             [routerLink]="['/order-details', order.OrderId]"
             class="btn btn-info"
-            >Details</a
           >
+            Details
+          </a>
         </td>
       </tr>
     </tbody>

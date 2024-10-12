@@ -1,10 +1,12 @@
 <div class="container">
   <h2>Checkout</h2>
 
+  <!-- The form is using Angular's template-driven forms via `ngForm` -->
   <form #checkoutForm="ngForm" (ngSubmit)="submitOrder(checkoutForm)">
     <div class="mb-3">
       <h4>Customer Information</h4>
-      <!-- Name -->
+
+      <!-- Name field with two-way data binding and validation -->
       <div class="form-group">
         <label for="name">Name</label>
         <input
@@ -16,13 +18,13 @@
           required
           #name="ngModel"
         />
-        <!-- Validation Message for Name -->
+        <!-- Display validation message when the name field is invalid and touched -->
         <div *ngIf="name.invalid && name.touched" class="text-danger">
           Name is required.
         </div>
       </div>
 
-      <!-- Email -->
+      <!-- Email field with validation -->
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -35,13 +37,13 @@
           email
           #email="ngModel"
         />
-        <!-- Validation Message for Email -->
+        <!-- Display validation message when the email field is invalid and touched -->
         <div *ngIf="email.invalid && email.touched" class="text-danger">
           Please enter a valid email address.
         </div>
       </div>
 
-      <!-- Address -->
+      <!-- Address field with validation -->
       <div class="form-group">
         <label for="address">Address</label>
         <textarea
@@ -52,15 +54,18 @@
           required
           #address="ngModel"
         ></textarea>
-        <!-- Validation Message for Address -->
+        <!-- Display validation message when the address field is invalid and touched -->
         <div *ngIf="address.invalid && address.touched" class="text-danger">
           Address is required.
         </div>
       </div>
     </div>
 
+    <!-- Payment Method section with validation for radio buttons -->
     <div class="mb-3">
       <h4>Payment Method</h4>
+
+      <!-- Radio button for Credit Card -->
       <div class="form-check">
         <input
           class="form-check-input"
@@ -74,6 +79,8 @@
         />
         <label class="form-check-label" for="creditCard">Credit Card</label>
       </div>
+
+      <!-- Radio button for PayPal -->
       <div class="form-check">
         <input
           class="form-check-input"
@@ -86,21 +93,24 @@
         />
         <label class="form-check-label" for="paypal">PayPal</label>
       </div>
-      <!-- Validation Message for Payment Method -->
+
+      <!-- Display validation message when no payment method is selected -->
       <div *ngIf="payment.invalid && payment.touched" class="text-danger">
         Please select a payment method.
       </div>
     </div>
 
+    <!-- Order Summary displaying the cart items -->
     <h4>Order Summary</h4>
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let item of cartItems">
         {{ item.product.ProductName }} - Quantity: {{ item.quantity }} - Price:
         {{ item.product.ProductPrice | currency }}
+        <!-- Display product price -->
       </li>
     </ul>
 
-    <!-- Disable the submit button if the form is invalid -->
+    <!-- Submit button is disabled until the form is valid -->
     <button class="btn btn-success mt-3" [disabled]="checkoutForm.invalid">
       Submit Order
     </button>

@@ -1,9 +1,12 @@
+<!-- Main container for the order details -->
 <section class="container" *ngIf="selectedOrder && customer">
+  <!-- Header for Order Details -->
   <header>
     <h2>Order Details - {{ selectedOrder.OrderId }}</h2>
   </header>
 
   <!-- Customer Information Section -->
+  <!-- Displaying the customer's details like Name, Email, Phone, and Address -->
   <article class="card my-4">
     <header class="card-header">Customer Information</header>
     <div class="card-body">
@@ -15,19 +18,25 @@
   </article>
 
   <!-- Products in Order Section -->
+  <!-- Listing all the products associated with the order -->
   <article class="card my-4">
     <header class="card-header">Products in Order</header>
     <ul class="list-group list-group-flush">
       <li *ngFor="let product of productsInOrder" class="list-group-item">
+        <!-- Displaying product name, price, quantity, and total price -->
         <strong>{{ product.ProductName }}</strong> -
         {{ product.ProductPrice | currency }} x
         {{ getProductQuantity(product.ProductId) }} =
-        {{ product.ProductPrice * getProductQuantity(product.ProductId) }} $
+        {{
+          product.ProductPrice * getProductQuantity(product.ProductId)
+            | currency
+        }}
       </li>
     </ul>
   </article>
 
   <!-- Payment Section -->
+  <!-- Displaying the payment type and total price of the order -->
   <article class="card my-4">
     <header class="card-header">Payment</header>
     <div class="card-body">
