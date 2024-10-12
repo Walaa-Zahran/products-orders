@@ -1,0 +1,29 @@
+<div class="container">
+  <h1 class="my-4">Orders</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Order Id</th>
+        <th>Total Price</th>
+        <th>Payment Method</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.OrderId }}</td>
+        <!-- Display the calculated total price for each order -->
+        <td>{{ calculateOrderPrice(order) | currency }}</td>
+
+        <td>{{ order.PaymentType }}</td>
+        <td>
+          <a
+            [routerLink]="['/order-details', order.OrderId]"
+            class="btn btn-info"
+            >Details</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

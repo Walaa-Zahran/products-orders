@@ -25,5 +25,8 @@ export class DataService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl);
   }
-
+  //Get All Orders
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.ordersUrl);
+  }
 }

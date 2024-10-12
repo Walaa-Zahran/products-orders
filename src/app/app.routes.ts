@@ -16,13 +16,13 @@ export const routes: Routes = [
     path: 'checkout',
     loadComponent: () => import('./features/checkout/checkout.component').then(m => m.CheckoutComponent)
   },
-  // {
-  //   path: 'orders',
-  //    loadComponent: () =>
-  //   import('./features/orders/order-list/order-list.component').then(
-  //     (m) => m.OrderListComponent
-  //   ),
-  //  },
+  {
+    path: 'orders',
+     loadComponent: () =>
+    import('./features/orders/orders.component').then(
+      (m) => m.OrderListComponent
+    ),
+   },
   //  {
   //   path: 'order-details/:id',
   //   loadComponent: () =>
