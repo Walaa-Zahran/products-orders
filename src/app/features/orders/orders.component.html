@@ -1,20 +1,25 @@
-<div class="container">
-  <h1 class="my-4">Orders</h1>
+<section class="container">
+  <header>
+    <h1 class="my-4">Orders</h1>
+  </header>
+
   <table class="table table-striped">
+    <caption>
+      List of all orders with total price and payment method
+    </caption>
     <thead>
       <tr>
-        <th>Order Id</th>
-        <th>Total Price</th>
-        <th>Payment Method</th>
-        <th>Actions</th>
+        <th scope="col">Order Id</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Payment Method</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
-        <td>{{ order.OrderId }}</td>
+        <td scope="row">{{ order.OrderId }}</td>
         <!-- Display the calculated total price for each order -->
         <td>{{ calculateOrderPrice(order) | currency }}</td>
-
         <td>{{ order.PaymentType }}</td>
         <td>
           <a
@@ -26,4 +31,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</section>

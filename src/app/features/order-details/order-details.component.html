@@ -1,20 +1,22 @@
-<div class="container" *ngIf="selectedOrder && customer">
-  <h2>Order Details - {{ selectedOrder.OrderId }}</h2>
+<section class="container" *ngIf="selectedOrder && customer">
+  <header>
+    <h2>Order Details - {{ selectedOrder.OrderId }}</h2>
+  </header>
 
-  <!-- Customer Information Card -->
-  <div class="card my-4">
-    <div class="card-header">Customer Information</div>
+  <!-- Customer Information Section -->
+  <article class="card my-4">
+    <header class="card-header">Customer Information</header>
     <div class="card-body">
       <p><strong>Name:</strong> {{ customer.Name }}</p>
       <p><strong>Email:</strong> {{ customer.Email }}</p>
       <p><strong>Phone:</strong> {{ customer.Phone }}</p>
       <p><strong>Address:</strong> {{ customer.Address }}</p>
     </div>
-  </div>
+  </article>
 
-  <!-- Products in Order -->
-  <div class="card my-4">
-    <div class="card-header">Products in Order</div>
+  <!-- Products in Order Section -->
+  <article class="card my-4">
+    <header class="card-header">Products in Order</header>
     <ul class="list-group list-group-flush">
       <li *ngFor="let product of productsInOrder" class="list-group-item">
         <strong>{{ product.ProductName }}</strong> -
@@ -23,11 +25,11 @@
         {{ product.ProductPrice * getProductQuantity(product.ProductId) }} $
       </li>
     </ul>
-  </div>
+  </article>
 
-  <!-- Order Total Price -->
-  <div class="card my-4">
-    <div class="card-header">Payment</div>
+  <!-- Payment Section -->
+  <article class="card my-4">
+    <header class="card-header">Payment</header>
     <div class="card-body">
       <p><strong>Payment Type:</strong> {{ selectedOrder.PaymentType }}</p>
       <p>
@@ -35,5 +37,5 @@
         {{ calculateTotalOrderPrice() | currency }}
       </p>
     </div>
-  </div>
-</div>
+  </article>
+</section>
