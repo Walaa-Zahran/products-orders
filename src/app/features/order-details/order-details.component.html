@@ -1,0 +1,39 @@
+<div class="container" *ngIf="selectedOrder && customer">
+  <h2>Order Details - {{ selectedOrder.OrderId }}</h2>
+
+  <!-- Customer Information Card -->
+  <div class="card my-4">
+    <div class="card-header">Customer Information</div>
+    <div class="card-body">
+      <p><strong>Name:</strong> {{ customer.Name }}</p>
+      <p><strong>Email:</strong> {{ customer.Email }}</p>
+      <p><strong>Phone:</strong> {{ customer.Phone }}</p>
+      <p><strong>Address:</strong> {{ customer.Address }}</p>
+    </div>
+  </div>
+
+  <!-- Products in Order -->
+  <div class="card my-4">
+    <div class="card-header">Products in Order</div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let product of productsInOrder" class="list-group-item">
+        <strong>{{ product.ProductName }}</strong> -
+        {{ product.ProductPrice | currency }} x
+        {{ getProductQuantity(product.ProductId) }} =
+        {{ product.ProductPrice * getProductQuantity(product.ProductId) }} $
+      </li>
+    </ul>
+  </div>
+
+  <!-- Order Total Price -->
+  <div class="card my-4">
+    <div class="card-header">Payment</div>
+    <div class="card-body">
+      <p><strong>Payment Type:</strong> {{ selectedOrder.PaymentType }}</p>
+      <p>
+        <strong>Total Price:</strong>
+        {{ calculateTotalOrderPrice() | currency }}
+      </p>
+    </div>
+  </div>
+</div>

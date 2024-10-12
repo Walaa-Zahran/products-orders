@@ -29,4 +29,40 @@ export class DataService {
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.ordersUrl);
   }
+  //Get Order
+  getOrder(orderId: number): Observable<Order | undefined> {
+    return this.getOrders().pipe(
+      map(orders => orders.find(order => order.OrderId === orderId))
+    );
+  }
+  //Get Products By Order Id
+  getProductsByOrderId(orderId: number): Observable<(ProductInOrder & Product|any)[]> {
+    return this.getOrder(orderId).pipe(
+      switchMap(order => {
+        if (!order) return [];
+
+        const productsInOrder = order.Products;
+        return this.http.get<Product[]>(this.productsUrl).pipe(
+          map(allProducts =>
+            productsInOrder.map(productInOrder => ({
+              ...productInOrder,
+              ...allProducts.find(p => p.ProductId === productInOrder.ProductId)
+            }))
+          )
+        );
+      })
+    );
+  }
+  //Get Customer By Order Id
+  getCustomerByOrder(orderId: number): Observable<Customer | undefined> {
+    return this.getOrder(orderId).pipe(
+      switchMap(order => {
+        if (!order) return [];
+
+        return this.http.get<Customer[]>(this.usersUrl).pipe(
+          map(users => users.find(user => user.Id === order.UserId))
+        );
+      })
+    );
+  }
 }
